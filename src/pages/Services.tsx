@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FileText, Printer, Palette, GraduationCap, Globe, CreditCard, Briefcase, Settings, ChevronDown, ChevronUp, CheckCircle, Truck, Building, Users2, Monitor } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const [expandedCategory, setExpandedCategory] = useState<string | null>('ecitizen');
@@ -352,12 +353,18 @@ const Services = () => {
             Over 150 professional services available 24/7 to meet all your digital needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <Link 
+              to="/contact"
+              className="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+            >
               Book a Service
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200">
+            </Link>
+            <Link 
+              to="/contact"
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200"
+            >
               Get Help Now
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -443,12 +450,18 @@ const Services = () => {
                         
                         <div className="mt-6 pt-6 border-t border-gray-200">
                           <div className="flex flex-col sm:flex-row gap-4">
-                            <button className={`bg-gradient-to-r ${category.color} text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 flex-1`}>
+                            <Link 
+                              to={`/contact?service=${encodeURIComponent(category.title)}`}
+                              className={`bg-gradient-to-r ${category.color} text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 flex-1 text-center`}
+                            >
                               Book These Services
-                            </button>
-                            <button className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-gray-400 transition-colors duration-200 flex-1">
+                            </Link>
+                            <Link 
+                              to={`/contact?service=${encodeURIComponent(category.title)}&type=quote`}
+                              className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-gray-400 transition-colors duration-200 flex-1 text-center"
+                            >
                               Get Quote
-                            </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -470,12 +483,18 @@ const Services = () => {
                 Our experienced team can help with any digital service requirement.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200">
+                <Link 
+                  to="/contact?service=Custom Service"
+                  className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200"
+                >
                   Request Custom Service
-                </button>
-                <button className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200">
+                </Link>
+                <Link 
+                  to="/contact"
+                  className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
+                >
                   Contact Our Team
-                </button>
+                </Link>
               </div>
             </div>
           </div>

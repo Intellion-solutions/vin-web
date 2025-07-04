@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FileText, Printer, Palette, GraduationCap, Globe, CreditCard, Briefcase, Settings, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -136,12 +135,20 @@ const ServicesOverview = () => {
                     </p>
                   )}
 
-                  <Link
-                    to={category.link}
-                    className={`block w-full text-center bg-gradient-to-r ${category.color} text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200 group-hover:scale-105`}
-                  >
-                    View All Services
-                  </Link>
+                  <div className="flex flex-col gap-3">
+                    <Link
+                      to={category.link}
+                      className={`block w-full text-center bg-gradient-to-r ${category.color} text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200 group-hover:scale-105`}
+                    >
+                      View All Services
+                    </Link>
+                    <Link
+                      to={`/contact?service=${encodeURIComponent(category.title)}`}
+                      className="block w-full text-center border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-gray-400 hover:bg-gray-50 transition-all duration-200"
+                    >
+                      Book Service
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

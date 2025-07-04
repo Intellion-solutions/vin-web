@@ -12,6 +12,14 @@ const Footer = () => {
     { name: 'Contact', path: '/contact' }
   ];
 
+  const additionalLinks = [
+    { name: 'Blog', path: '/blog' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'FAQ', path: '/faq' },
+    { name: 'Privacy Policy', path: '/privacy' },
+    { name: 'Terms of Service', path: '/terms' }
+  ];
+
   const services = [
     'eCitizen Services',
     'Fleet Booking',
@@ -79,6 +87,19 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    to={link.path}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="text-lg font-bold mb-6 mt-8">More Pages</h4>
+            <ul className="space-y-3">
+              {additionalLinks.map((link) => (
                 <li key={link.name}>
                   <Link 
                     to={link.path}
@@ -187,6 +208,9 @@ const Footer = () => {
               </Link>
               <Link to="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
                 Terms of Service
+              </Link>
+              <Link to="/faq" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+                FAQ
               </Link>
             </div>
           </div>
