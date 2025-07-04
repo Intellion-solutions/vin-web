@@ -3,11 +3,42 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Calendar, User, Clock, Search, Filter, BookOpen, ArrowRight, Tag, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
+import { addStructuredData } from '../utils/seo';
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('date');
+
+  useSEO(pageSEOConfigs.blog);
+
+  // Add blog structured data
+  React.useEffect(() => {
+    const blogData = {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Vincom Computer Enterprise Blog",
+      "description": "Digital insights, tips, and guides for navigating Kenya's digital landscape",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Vincom Computer (K) Enterprise Ltd"
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "Complete Guide to eCitizen Services in Kenya 2024",
+          "datePublished": "2024-01-15",
+          "author": {
+            "@type": "Person",
+            "name": "Vincent Mutunga"
+          }
+        }
+      ]
+    };
+    
+    addStructuredData(blogData);
+  }, []);
 
   const blogPosts = [
     {

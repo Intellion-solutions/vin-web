@@ -1,14 +1,32 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { X, ZoomIn, Filter } from 'lucide-react';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
+import { addStructuredData } from '../utils/seo';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('all');
+
+  useSEO(pageSEOConfigs.gallery);
+
+  // Add gallery structured data
+  React.useEffect(() => {
+    const galleryData = {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Service Gallery",
+      "description": "Visual showcase of our digital services, facilities, and customer experiences",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Vincom Computer (K) Enterprise Ltd"
+      }
+    };
+    
+    addStructuredData(galleryData);
+  }, []);
 
   const categories = [
     { id: 'all', name: 'All Images', count: 20 },
@@ -298,7 +316,7 @@ const Gallery = () => {
                 Ready to Experience Our Services?
               </h3>
               <p className="text-lg mb-6">
-                Visit Mutunga Enterprise and see why thousands of Kenyans trust us 
+                Visit Vincom Computer Enterprise and see why thousands of Kenyans trust us 
                 with their digital service needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

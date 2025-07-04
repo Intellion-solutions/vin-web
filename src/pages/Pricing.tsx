@@ -1,10 +1,27 @@
-
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Check, Star, Zap, MessageCircle, Phone } from 'lucide-react';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
+import { addStructuredData } from '../utils/seo';
 
 const Pricing = () => {
+  useSEO(pageSEOConfigs.pricing);
+
+  // Add pricing structured data
+  React.useEffect(() => {
+    const pricingData = {
+      "@context": "https://schema.org",
+      "@type": "PriceSpecification",
+      "name": "Digital Services Pricing",
+      "description": "Transparent pricing for all digital services including eCitizen, printing, and training",
+      "priceCurrency": "KES",
+      "eligibleRegion": "Kenya"
+    };
+    
+    addStructuredData(pricingData);
+  }, []);
+
   const pricingCategories = [
     {
       title: "eCitizen Services",

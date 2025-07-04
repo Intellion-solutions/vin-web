@@ -2,8 +2,11 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Shield, Lock, Eye, FileText, Users, Clock, CheckCircle } from 'lucide-react';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
 
 const Privacy = () => {
+  useSEO(pageSEOConfigs.privacy);
+
   const privacyPrinciples = [
     {
       icon: <Shield className="w-8 h-8" />,

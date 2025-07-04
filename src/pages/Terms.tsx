@@ -2,8 +2,11 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FileText, Scale, Shield, Clock, AlertTriangle, CheckCircle } from 'lucide-react';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
 
 const Terms = () => {
+  useSEO(pageSEOConfigs.terms);
+
   const keyTerms = [
     {
       icon: <FileText className="w-8 h-8" />,

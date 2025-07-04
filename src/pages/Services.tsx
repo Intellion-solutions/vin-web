@@ -3,9 +3,36 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FileText, Printer, Palette, GraduationCap, Globe, CreditCard, Briefcase, Settings, ChevronDown, ChevronUp, CheckCircle, Truck, Building, Users2, Monitor } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
+import { addStructuredData } from '../utils/seo';
 
 const Services = () => {
   const [expandedCategory, setExpandedCategory] = useState<string | null>('ecitizen');
+  
+  useSEO(pageSEOConfigs.services);
+
+  // Add service-specific structured data
+  React.useEffect(() => {
+    const serviceStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Digital Services",
+      "description": "Comprehensive digital services including eCitizen applications, printing, computer training, and business consultancy",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Vincom Computer (K) Enterprise Ltd"
+      },
+      "areaServed": "Kenya",
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "availableLanguage": "English",
+        "servicePhone": "+254726564132",
+        "serviceUrl": "https://vincomcomputerenterprise.co.ke/services"
+      }
+    };
+    
+    addStructuredData(serviceStructuredData);
+  }, []);
 
   const serviceCategories = [
     {
@@ -150,6 +177,7 @@ const Services = () => {
         "Visa Applications (Tourist/Business)",
         "Work Permit Applications",
         "Student Visa Applications",
+        "Tourist Visa",
         "Residence Permit Applications",
         "Kenya Revenue Authority Services",
         "National Hospital Insurance Fund",

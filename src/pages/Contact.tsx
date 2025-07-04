@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send, User, FileText, Calendar } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
+import { addStructuredData } from '../utils/seo';
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
@@ -14,6 +16,26 @@ const Contact = () => {
     message: '',
     urgency: 'normal'
   });
+
+  useSEO(pageSEOConfigs.contact);
+
+  // Add contact page structured data
+  React.useEffect(() => {
+    const contactData = {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Vincom Computer Enterprise",
+      "description": "Contact us for all your digital service needs. Available 24/7 with multiple contact options.",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "Vincom Computer (K) Enterprise Ltd",
+        "telephone": "+254726564132",
+        "email": "info@vincomcomputerenterprise.co.ke"
+      }
+    };
+    
+    addStructuredData(contactData);
+  }, []);
 
   useEffect(() => {
     const serviceParam = searchParams.get('service');
@@ -41,9 +63,9 @@ const Contact = () => {
   };
 
   const handleEmailContact = () => {
-    const subject = 'Service Inquiry - Mutunga Enterprise Ltd';
+    const subject = 'Service Inquiry - Vincom Computer Enterprise Ltd';
     const body = `Hello,\n\nI would like to inquire about your services.\n\nBest regards,\n${formData.name || '[Your Name]'}`;
-    const mailtoUrl = `mailto:mutuvince@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:info@vincomcomputerenterprise.co.ke?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoUrl;
   };
 

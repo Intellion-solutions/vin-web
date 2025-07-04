@@ -3,10 +3,13 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ChevronDown, ChevronUp, Search, HelpCircle, MessageCircle, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+
+  useSEO(pageSEOConfigs.faq);
 
   const faqCategories = [
     {

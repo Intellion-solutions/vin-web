@@ -1,16 +1,35 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Eye, ExternalLink, Calendar, User, Tag, Filter, Search } from 'lucide-react';
 import { useSecureForm } from '../hooks/useSecureForm';
 import { useToast } from "@/hooks/use-toast";
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
+import { addStructuredData } from '../utils/seo';
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const { toast } = useToast();
+
+  useSEO(pageSEOConfigs.portfolio);
+
+  // Add portfolio structured data
+  React.useEffect(() => {
+    const portfolioData = {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Digital Portfolio",
+      "description": "Showcase of digital projects including web development, graphic design, and business solutions",
+      "creator": {
+        "@type": "Organization",
+        "name": "Vincom Computer (K) Enterprise Ltd"
+      }
+    };
+    
+    addStructuredData(portfolioData);
+  }, []);
 
   const categories = [
     { id: 'all', name: 'All Projects', count: 24 },
@@ -219,7 +238,7 @@ const Portfolio = () => {
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors line-clamp-2">
                     {project.title}
                   </h3>
                   

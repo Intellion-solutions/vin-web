@@ -10,8 +10,11 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import ContactPreview from '../components/ContactPreview';
 import LocationMap from '../components/LocationMap';
 import Footer from '../components/Footer';
+import { useSEO, pageSEOConfigs } from '../hooks/useSEO';
 
 const Index = () => {
+  useSEO(pageSEOConfigs.home);
+
   return (
     <div className="min-h-screen">
       <Header />
