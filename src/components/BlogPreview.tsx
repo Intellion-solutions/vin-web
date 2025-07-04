@@ -112,10 +112,10 @@ const BlogPreview = () => {
                     </div>
                   </div>
                   <Link 
-                    to={`/blog/${post.id}`}
+                    to={`/contact?service=Blog Consultation&message=I would like to learn more about: ${post.title}`}
                     className="text-green-600 hover:text-green-700 font-semibold flex items-center space-x-1 group"
                   >
-                    <span>Read</span>
+                    <span>Learn More</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -143,7 +143,7 @@ const BlogPreview = () => {
                 <span>View All Articles</span>
               </Link>
               <Link 
-                to="/contact"
+                to="/contact?service=Blog Consultation"
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200"
               >
                 Ask Our Experts

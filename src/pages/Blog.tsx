@@ -1,5 +1,6 @@
-
 import React, { useState, useMemo } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Calendar, User, Clock, Search, Filter, BookOpen, ArrowRight, Tag, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ const Blog = () => {
       id: 1,
       title: "Complete Guide to eCitizen Services in Kenya 2024",
       excerpt: "Everything you need to know about accessing government services online, from birth certificates to passport applications.",
-      content: "The eCitizen platform has revolutionized how Kenyans access government services...",
+      content: "The eCitizen platform has revolutionized how Kenyans access government services. This comprehensive guide covers all the essential services available through the platform, step-by-step processes, required documents, fees, and tips for successful applications. Whether you're applying for your first ID card, renewing your passport, or registering for NHIF, this guide has you covered.",
       author: "Vincent Mutunga",
       date: "2024-01-15",
       category: "Government Services",
@@ -27,7 +28,7 @@ const Blog = () => {
       id: 2,
       title: "Digital Skills for the Modern Workplace",
       excerpt: "Essential computer skills every professional needs in today's digital economy.",
-      content: "In today's rapidly evolving workplace, digital literacy is no longer optional...",
+      content: "In today's rapidly evolving workplace, digital literacy is no longer optional. This article explores the essential computer skills that every professional needs, from basic computer operations to advanced software proficiency. Learn about Microsoft Office mastery, internet research techniques, digital communication, and emerging technologies that are shaping the future of work.",
       author: "Sarah Wanjiku",
       date: "2024-01-12",
       category: "Technology",
@@ -41,7 +42,7 @@ const Blog = () => {
       id: 3,
       title: "Starting Your Business: Registration Made Easy",
       excerpt: "Step-by-step guide to registering your business in Kenya and getting all necessary permits.",
-      content: "Starting a business in Kenya has never been easier with digital platforms...",
+      content: "Starting a business in Kenya has never been easier with digital platforms and streamlined processes. This comprehensive guide walks you through every step of business registration, from choosing the right business structure to obtaining necessary licenses and permits. Learn about the costs involved, required documents, and how to avoid common pitfalls.",
       author: "David Kimani",
       date: "2024-01-10",
       category: "Business",
@@ -55,7 +56,7 @@ const Blog = () => {
       id: 4,
       title: "Professional CV Writing Tips for 2024",
       excerpt: "Create a winning CV that stands out to employers and lands you your dream job.",
-      content: "Your CV is often the first impression you make on potential employers...",
+      content: "Your CV is often the first impression you make on potential employers. In this detailed guide, learn how to craft a professional CV that highlights your strengths, showcases your achievements, and gets you noticed. Includes templates, examples, and industry-specific tips for different career fields.",
       author: "Grace Akinyi",
       date: "2024-01-08",
       category: "Career",
@@ -69,7 +70,7 @@ const Blog = () => {
       id: 5,
       title: "Web Development Trends in Kenya",
       excerpt: "Latest trends and opportunities in web development for Kenyan businesses.",
-      content: "The web development landscape in Kenya is experiencing rapid growth...",
+      content: "The web development landscape in Kenya is experiencing rapid growth. Explore the latest trends, technologies, and opportunities in the Kenyan web development market. From mobile-first design to e-commerce solutions, learn what's driving digital transformation in Kenya and how businesses can leverage these trends.",
       author: "Vincent Mutunga",
       date: "2024-01-05",
       category: "Technology",
@@ -83,11 +84,11 @@ const Blog = () => {
       id: 6,
       title: "Printing Solutions for Small Businesses",
       excerpt: "Cost-effective printing strategies and solutions for small business owners.",
-      content: "Small businesses often struggle with finding cost-effective printing solutions...",
+      content: "Small businesses often struggle with finding cost-effective printing solutions that meet their needs without breaking the budget. This guide covers everything from choosing the right printing services to designing effective marketing materials. Learn about bulk printing discounts, quality considerations, and how to maximize your printing budget.",
       author: "Sarah Wanjiku",
       date: "2024-01-03",
       category: "Business",
-      tags: ["#Printing", "#Small Business", "Marketing"],
+      tags: ["#Printing", "#Small Business", "#Marketing"],
       readTime: "5 min read",
       views: 980,
       featured: false,
@@ -132,12 +133,12 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-    
+      <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-600 via-black to-red-600 text-white py-3">
-        <div className="container mx-auto px-3 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
+      <section className="bg-gradient-to-r from-green-600 via-black to-red-600 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
             Our Blog
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in">
@@ -153,7 +154,7 @@ const Blog = () => {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-10 bg-white shadow-sm">
+      <section className="py-12 bg-white shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
             {/* Search */}
@@ -247,10 +248,10 @@ const Blog = () => {
                         </div>
                       </div>
                       <Link 
-                        to={`/blog/${post.id}`}
+                        to={`/contact?service=Blog Consultation&message=I would like to learn more about: ${post.title}`}
                         className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200 flex items-center space-x-2 group"
                       >
-                        <span>Read More</span>
+                        <span>Learn More</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </Link>
                     </div>
@@ -317,10 +318,10 @@ const Blog = () => {
                       </div>
                     </div>
                     <Link 
-                      to={`/blog/${post.id}`}
+                      to={`/contact?service=Blog Consultation&message=I would like to learn more about: ${post.title}`}
                       className="text-green-600 hover:text-green-700 font-semibold flex items-center space-x-1 group"
                     >
-                      <span>Read</span>
+                      <span>Learn More</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -352,14 +353,17 @@ const Blog = () => {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
-            <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <Link
+              to="/contact?service=Newsletter Subscription"
+              className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+            >
               Subscribe
-            </button>
+            </Link>
           </div>
         </div>
       </section>
 
-    
+      <Footer />
     </div>
   );
 };

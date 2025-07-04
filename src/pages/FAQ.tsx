@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ChevronDown, ChevronUp, Search, HelpCircle, MessageCircle, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -137,69 +138,69 @@ const FAQ = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-600 via-black to-red-600 text-white py-20">
+      {/* Hero Section - Full Screen */}
+      <section className="bg-gradient-to-r from-green-600 via-black to-red-600 text-white py-32">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8">
             Frequently Asked Questions
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          <p className="text-2xl md:text-3xl mb-12 max-w-4xl mx-auto">
             Find answers to common questions about our services and processes
           </p>
-          <div className="flex items-center justify-center space-x-2 text-lg">
-            <HelpCircle className="w-6 h-6" />
+          <div className="flex items-center justify-center space-x-2 text-xl">
+            <HelpCircle className="w-8 h-8" />
             <span>Can't find what you're looking for? Contact us!</span>
           </div>
         </div>
       </section>
 
-      {/* Search Section */}
-      <section className="py-12 bg-white">
+      {/* Search Section - Full Width */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <div className="relative">
-              <Search className="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <Search className="w-8 h-8 absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search frequently asked questions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-lg"
+                className="w-full pl-16 pr-6 py-6 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-green-500 focus:border-transparent text-xl"
               />
             </div>
-            <p className="text-center text-gray-600 mt-4">
+            <p className="text-center text-gray-600 mt-6 text-lg">
               {filteredFAQs.length} question{filteredFAQs.length !== 1 ? 's' : ''} found
             </p>
           </div>
         </div>
       </section>
 
-      {/* FAQ Content */}
-      <section className="py-20">
+      {/* FAQ Content - Full Screen */}
+      <section className="py-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {searchTerm ? (
               // Show filtered results
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {filteredFAQs.map((faq) => (
-                  <div key={faq.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                  <div key={faq.id} className="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <button
                       onClick={() => toggleFAQ(faq.id)}
-                      className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                      className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                     >
                       <div>
                         <span className="text-sm text-green-600 font-medium">{faq.category}</span>
-                        <h3 className="text-lg font-semibold text-gray-900 mt-1">{faq.question}</h3>
+                        <h3 className="text-xl font-semibold text-gray-900 mt-2">{faq.question}</h3>
                       </div>
                       {expandedFAQ === faq.id ? (
-                        <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                        <ChevronUp className="w-6 h-6 text-gray-500 flex-shrink-0" />
                       ) : (
-                        <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                        <ChevronDown className="w-6 h-6 text-gray-500 flex-shrink-0" />
                       )}
                     </button>
                     {expandedFAQ === faq.id && (
-                      <div className="px-6 pb-4">
-                        <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                      <div className="px-8 pb-6">
+                        <p className="text-lg text-gray-600 leading-relaxed">{faq.answer}</p>
                       </div>
                     )}
                   </div>
@@ -207,12 +208,12 @@ const FAQ = () => {
               </div>
             ) : (
               // Show by categories
-              <div className="space-y-8">
+              <div className="space-y-12">
                 {faqCategories.map((category, categoryIndex) => (
-                  <div key={categoryIndex} className="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <div className="bg-gradient-to-r from-green-600 to-red-600 text-white p-6">
-                      <h2 className="text-2xl font-bold">{category.category}</h2>
-                      <p className="text-white text-opacity-90 mt-2">
+                  <div key={categoryIndex} className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                    <div className="bg-gradient-to-r from-green-600 to-red-600 text-white p-8">
+                      <h2 className="text-3xl font-bold">{category.category}</h2>
+                      <p className="text-white text-opacity-90 mt-3 text-lg">
                         {category.faqs.length} frequently asked questions
                       </p>
                     </div>
@@ -223,18 +224,18 @@ const FAQ = () => {
                           <div key={faqIndex}>
                             <button
                               onClick={() => toggleFAQ(faqId)}
-                              className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                              className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                             >
-                              <h3 className="text-lg font-semibold text-gray-900">{faq.question}</h3>
+                              <h3 className="text-xl font-semibold text-gray-900">{faq.question}</h3>
                               {expandedFAQ === faqId ? (
-                                <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                                <ChevronUp className="w-6 h-6 text-gray-500 flex-shrink-0" />
                               ) : (
-                                <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                                <ChevronDown className="w-6 h-6 text-gray-500 flex-shrink-0" />
                               )}
                             </button>
                             {expandedFAQ === faqId && (
-                              <div className="px-6 pb-4">
-                                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                              <div className="px-8 pb-6">
+                                <p className="text-lg text-gray-600 leading-relaxed">{faq.answer}</p>
                               </div>
                             )}
                           </div>
@@ -249,31 +250,37 @@ const FAQ = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-white">
+      {/* Contact Section - Full Width */}
+      <section className="py-32 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">
               Still Have Questions?
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
               Our friendly staff is always ready to help. Contact us through any of these channels for immediate assistance.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a 
                 href="tel:+254726564132"
-                className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200 flex items-center justify-center space-x-2"
+                className="bg-green-600 text-white px-12 py-4 rounded-2xl font-semibold hover:bg-green-700 transition-colors duration-200 flex items-center justify-center space-x-3 text-lg"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-6 h-6" />
                 <span>Call Us Now</span>
               </a>
               <a 
                 href="https://wa.me/254726564132"
-                className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200 flex items-center justify-center space-x-2"
+                className="bg-red-600 text-white px-12 py-4 rounded-2xl font-semibold hover:bg-red-700 transition-colors duration-200 flex items-center justify-center space-x-3 text-lg"
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="w-6 h-6" />
                 <span>WhatsApp Us</span>
               </a>
+              <Link 
+                to="/contact"
+                className="border-2 border-gray-300 text-gray-700 px-12 py-4 rounded-2xl font-semibold hover:border-gray-400 hover:bg-gray-50 transition-colors duration-200 text-lg"
+              >
+                Contact Form
+              </Link>
             </div>
           </div>
         </div>
