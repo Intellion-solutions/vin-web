@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Menu, X, Search, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -60,12 +59,12 @@ const Header = () => {
             <div className="w-20 h-20 flex items-center justify-center">
               <img 
                 src="/assets/dfdb6b94-9976-4ca2-85da-47f0aa5d2551.png" 
-                alt="Vincom Computer Enterprise" 
+                alt="Vincom Computer Enterprise - Leading Cyber Cafe in Kenya" 
                 className="w-full h-full object-contain"
               />
             </div>
             <div>
-              <h1 className="text-2xl font-black text-gray-900">VINCOM COMPUTER (K) ENTERPRISE</h1>
+              <h1 className="text-2xl font-black text-gray-900">VINCOM COMPUTER ENTERPRISE</h1>
               <p className="text-sm text-gray-600 font-medium">Your Digital Gateway</p>
               <p className="text-sm text-gray-600 font-medium">P.O Box 14-40308,</p>
               <p className="text-sm text-gray-600 font-medium">Sindo.</p>
@@ -122,6 +121,7 @@ const Header = () => {
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 text-gray-700 hover:text-green-600"
+            aria-label="Toggle mobile menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

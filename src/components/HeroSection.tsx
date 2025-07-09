@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, Clock, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -113,7 +112,7 @@ const HeroSection = () => {
             <div className="absolute top-1/2 right-10 transform -translate-y-1/2 z-5 opacity-6">
               <img 
                 src="/assets/dfdb6b94-9976-4ca2-85da-47f0aa5d2551.png" 
-                alt="Vincom Computer (K)  Enterprise Ltd" 
+                alt="Vincom Computer Enterprise Logo" 
                 className="w-60 h-60 object-contain filter brightness-300"
               />
             </div>
@@ -132,13 +131,13 @@ const HeroSection = () => {
               <div className="w-20 h-20 flex items-center justify-center bg-white bg-opacity-10 backdrop-blur-sm rounded-full">
                 <img 
                   src="/assets/dfdb6b94-9976-4ca2-85da-47f0aa5d2551.png" 
-                  alt="Vincom Computer (K)Enterprise Ltd" 
+                  alt="Vincom Computer Enterprise Logo" 
                   className="w-16 h-16 object-contain"
                 />
               </div>
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                  Vincom Computer Enterprise Ltd
+                  Vincom Computer Enterprise
                 </h2>
                 <p className="text-green-300 text-lg">Your Trusted Digital Gateway</p>
               </div>
@@ -209,6 +208,7 @@ const HeroSection = () => {
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all duration-200"
+        aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
@@ -216,6 +216,7 @@ const HeroSection = () => {
       <button
         onClick={nextSlide}
         className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all duration-200"
+        aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
@@ -228,6 +229,7 @@ const HeroSection = () => {
             className={`w-3 h-3 rounded-full transition-all duration-200 ${
               index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
