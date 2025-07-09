@@ -5,6 +5,8 @@ Vincom Computer (K) Enterprise Ltd is Kenya's leading digital services center lo
 
 ### Core Services
 - eCitizen Services: Government document processing, ID cards, birth certificates, passports
+- Computer Training: Digital literacy, Microsoft Office, web design, graphic design courses
+- Fleet Booking: Bus tickets, car rentals, truck hire, transportation coordination
 - Computer Training: Digital literacy, Microsoft Office, web design, graphic design
 - Printing Services: Professional printing, scanning, lamination, large format printing
 - Business Consultancy: Business registration, planning, tax services, legal documents
@@ -23,6 +25,8 @@ Vincom Computer (K) Enterprise Ltd is Kenya's leading digital services center lo
 
 ### Specializations
 - Government eCitizen applications and assistance
+- Professional computer training and certification programs
+- Comprehensive fleet booking and transportation services
 - Professional document printing and design
 - Computer training and digital literacy programs
 - Business registration and consultancy services
@@ -33,6 +37,7 @@ Vincom Computer (K) Enterprise Ltd is Kenya's leading digital services center lo
 ### Service Areas
 - Primary: Homabay County, Kenya
 - Secondary: All of Kenya
+- Transportation: Nationwide coverage
 - Remote services available nationwide
 
 ### Pricing Philosophy

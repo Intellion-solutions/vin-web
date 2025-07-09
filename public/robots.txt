@@ -3,6 +3,7 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://vincomcomputerenterprise.co.ke/sitemap.xml
+Sitemap: https://vincomcomputerenterprise.co.ke/manifest.json
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
@@ -31,6 +32,7 @@ Disallow: /api/
 # Allow important files
 Allow: /sitemap.xml
 Allow: /llms.txt
+Allow: /manifest.json
 Allow: /favicon.ico
 Allow: /assets/
 Allow: /course/

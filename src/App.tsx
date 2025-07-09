@@ -12,6 +12,8 @@ import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import NotFound from "./pages/NotFound";
 import Pricing from "./pages/Pricing";
+import Training from "./pages/Training";
+import Booking from "./pages/Booking";
 import Blog from "./pages/Blog";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -46,6 +48,8 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/booking" element={<Booking />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

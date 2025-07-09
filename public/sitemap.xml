@@ -5,6 +5,11 @@
     <lastmod>2025-01-23T12:00:00+03:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://vincomcomputerenterprise.co.ke/assets/vincentlogo.png</image:loc>
+      <image:title>Vincom Computer Enterprise Logo</image:title>
+      <image:caption>Leading cyber cafe and digital services center in Kenya</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vincomcomputerenterprise.co.ke/services</loc>
@@ -47,6 +52,18 @@
     <lastmod>2025-01-23T12:00:00+03:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vincomcomputerenterprise.co.ke/training</loc>
+    <lastmod>2025-01-23T12:00:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vincomcomputerenterprise.co.ke/booking</loc>
+    <lastmod>2025-01-23T12:00:00+03:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://vincomcomputerenterprise.co.ke/faq</loc>

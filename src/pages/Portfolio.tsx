@@ -347,10 +347,13 @@ const Portfolio = () => {
                 </div>
                 
                 <div className="flex gap-4">
-                  <button className="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2">
+                  <Link 
+                    to={`/contact?service=${encodeURIComponent(selectedProject.category)}&project=${encodeURIComponent(selectedProject.title)}`}
+                    className="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+                  >
                     <ExternalLink className="w-5 h-5" />
                     <span>Start Similar Project</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

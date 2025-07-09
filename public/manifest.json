@@ -1,0 +1,30 @@
+{
+  "name": "Vincom Computer Enterprise - Leading Cyber Cafe in Kenya",
+  "short_name": "Vincom Computer",
+  "description": "Kenya's premier digital services center offering eCitizen services, computer training, printing, and business solutions 24/7",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/vincentlogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/vincentlogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "education", "productivity"],
+  "lang": "en-KE",
+  "dir": "ltr",
+  "scope": "/",
+  "related_applications": [],
+  "prefer_related_applications": false
+}

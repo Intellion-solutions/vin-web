@@ -23,6 +23,8 @@ const Header = () => {
         'Custom IT Services'
       ]
     },
+    { name: 'Training', path: '/training' },
+    { name: 'Booking', path: '/booking' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'About', path: '/about' },
