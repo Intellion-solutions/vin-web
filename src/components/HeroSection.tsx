@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, Clock, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const slides = [
     {
@@ -157,6 +161,8 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          {/* Desktop Buttons */}
+          <div className="hidden sm:flex flex-col sm:flex-row gap-4 mb-8">
             <Link
               to={slides[currentSlide].link}
               className="bg-red-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-700 transition-colors duration-200 text-center"
@@ -170,6 +176,75 @@ const HeroSection = () => {
               Get Help Now
             </Link>
           </div>
+
+          {/* Mobile Sidebar Toggle */}
+          <div className="sm:hidden flex justify-center mb-8">
+            <button
+              onClick={() => setIsMobileSidebarOpen(true)}
+              className="bg-white bg-opacity-20 backdrop-blur-sm text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 hover:bg-opacity-30 transition-all duration-200"
+            >
+              <Menu className="w-5 h-5" />
+              <span>View Options</span>
+            </button>
+          </div>
+
+          {/* Mobile Sidebar */}
+          {isMobileSidebarOpen && (
+            <div className="fixed inset-0 z-50 sm:hidden">
+              <div className="absolute inset-0 bg-black bg-opacity-50" onClick={() => setIsMobileSidebarOpen(false)}></div>
+              <div className="absolute right-0 top-0 h-full w-80 bg-white shadow-xl transform transition-transform duration-300">
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-xl font-bold text-gray-900">Quick Actions</h3>
+                    <button
+                      onClick={() => setIsMobileSidebarOpen(false)}
+                      className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                    >
+                      <X className="w-5 h-5 text-gray-600" />
+                    </button>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <Link
+                      to={slides[currentSlide].link}
+                      className="block w-full bg-red-600 text-white px-6 py-4 rounded-lg font-semibold text-center hover:bg-red-700 transition-colors duration-200"
+                      onClick={() => setIsMobileSidebarOpen(false)}
+                    >
+                      {slides[currentSlide].cta}
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="block w-full border-2 border-gray-300 text-gray-700 px-6 py-4 rounded-lg font-semibold text-center hover:bg-gray-50 transition-colors duration-200"
+                      onClick={() => setIsMobileSidebarOpen(false)}
+                    >
+                      Get Help Now
+                    </Link>
+                    <Link
+                      to="/services"
+                      className="block w-full bg-green-600 text-white px-6 py-4 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors duration-200"
+                      onClick={() => setIsMobileSidebarOpen(false)}
+                    >
+                      View All Services
+                    </Link>
+                    <a
+                      href="tel:+254726564132"
+                      className="block w-full bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold text-center hover:bg-blue-700 transition-colors duration-200"
+                      onClick={() => setIsMobileSidebarOpen(false)}
+                    >
+                      Call Now
+                    </a>
+                    <a
+                      href="https://wa.me/254726564132"
+                      className="block w-full bg-green-500 text-white px-6 py-4 rounded-lg font-semibold text-center hover:bg-green-600 transition-colors duration-200"
+                      onClick={() => setIsMobileSidebarOpen(false)}
+                    >
+                      WhatsApp Us
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
             <div className="flex items-center space-x-3 text-white">

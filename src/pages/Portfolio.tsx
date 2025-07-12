@@ -109,15 +109,28 @@ const Portfolio = () => {
     }
   ];
 
-  const contactForm = useSecureForm({
-    onSubmit: async (data) => {
-      console.log('Secure form submission:', data);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-    },
-    requiredFields: ['name', 'email', 'project'],
-    rateLimitKey: 'portfolio-contact',
-    maxAttempts: 3
+  const [contactFormData, setContactFormData] = useState({
+    name: '',
+    email: '',
+    project: '',
+    message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const message = `Hello! I would like to start a project.\n\nName: ${contactFormData.name}\nEmail: ${contactFormData.email}\nProject Type: ${contactFormData.project}\nMessage: ${contactFormData.message}`;
+    const whatsappUrl = `https://wa.me/254726564132?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    setIsSubmitting(false);
+    toast({
+      title: "Success",
+      description: "Redirecting to WhatsApp for project discussion!",
+    });
+  };
 
   const filteredProjects = projects.filter(project => {
     const matchesCategory = selectedCategory === 'all' || project.category === selectedCategory;
@@ -373,47 +386,38 @@ const Portfolio = () => {
             </p>
             
             <form onSubmit={contactForm.handleSubmit} className="space-y-6">
-              <input type="hidden" name="_token" value={contactForm.csrfToken} />
+            <form onSubmit={handleContactSubmit} className="space-y-6">
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <input
                     type="text"
                     placeholder="Your Name"
-                    value={contactForm.formData.name || ''}
-                    onChange={(e) => contactForm.updateField('name', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
-                      contactForm.errors.name ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    value={contactFormData.name}
+                    onChange={(e) => setContactFormData(prev => ({ ...prev, name: e.target.value }))}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    required
                   />
-                  {contactForm.errors.name && (
-                    <p className="mt-1 text-sm text-red-500">{contactForm.errors.name}</p>
-                  )}
                 </div>
                 
                 <div>
                   <input
                     type="email"
                     placeholder="Your Email"
-                    value={contactForm.formData.email || ''}
-                    onChange={(e) => contactForm.updateField('email', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
-                      contactForm.errors.email ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    value={contactFormData.email}
+                    onChange={(e) => setContactFormData(prev => ({ ...prev, email: e.target.value }))}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    required
                   />
-                  {contactForm.errors.email && (
-                    <p className="mt-1 text-sm text-red-500">{contactForm.errors.email}</p>
-                  )}
                 </div>
               </div>
               
               <div>
                 <select
-                  value={contactForm.formData.project || ''}
-                  onChange={(e) => contactForm.updateField('project', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
-                    contactForm.errors.project ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  value={contactFormData.project}
+                  onChange={(e) => setContactFormData(prev => ({ ...prev, project: e.target.value }))}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  required
                 >
                   <option value="">Select Project Type</option>
                   <option value="web-development">Web Development</option>
@@ -423,27 +427,24 @@ const Portfolio = () => {
                   <option value="training">Digital Training</option>
                   <option value="other">Other</option>
                 </select>
-                {contactForm.errors.project && (
-                  <p className="mt-1 text-sm text-red-500">{contactForm.errors.project}</p>
-                )}
               </div>
               
               <div>
                 <textarea
                   placeholder="Tell us about your project..."
                   rows={4}
-                  value={contactForm.formData.message || ''}
-                  onChange={(e) => contactForm.updateField('message', e.target.value)}
+                  value={contactFormData.message}
+                  onChange={(e) => setContactFormData(prev => ({ ...prev, message: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
               </div>
               
               <button
                 type="submit"
-                disabled={contactForm.isSubmitting}
-                className="w-full bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={isSubmitting}
+                className="w-full bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {contactForm.isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
